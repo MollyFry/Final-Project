@@ -17,5 +17,5 @@ This is a security system designed for smaller budget museums to protect their p
 | when the potentiometer is turned the LED next to the items turn on              | pass | 
 | the alarm goes off when someone is trying to steal the item | fail | the alarm is always going off and we could not get it to only make a sound when the system detects something 
 
-
+20250313_094924.jpg
 
