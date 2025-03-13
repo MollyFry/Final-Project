@@ -19,3 +19,4 @@ This is a security system designed for smaller budget museums to protect their p
 
 ![image](https://github.com/user-attachments/assets/fa53f9bf-c518-4796-b5dc-363100e484fe)
 
+This is the module diagram for the code. The system is museum_security_system because it is called from the main function. The subsystems are user_interface and intruder_detection. The drivers are motor, display, and check_on_diamond. 
