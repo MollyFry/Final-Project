@@ -5,7 +5,6 @@
 
 #include "intruder_detection.h"
 #include "motor.h"
-#include "check_code.h"
 #include <cstdio>
 
 
