@@ -1,9 +1,12 @@
+//this is the code for configuring the LCD display
+//repurposed from the textbook
+
 //=====[Libraries]=============================================================
 
 #include "mbed.h"
 #include "arm_book_lib.h"
 #include "display.h"
-#include "user_interface.h"
+
 
 //=====[Declaration of private defines]========================================
 
