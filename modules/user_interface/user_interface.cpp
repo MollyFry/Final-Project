@@ -4,12 +4,12 @@
 #include "display.h"
 #include "intruder_detection.h"
 #include "mbed.h"
-
 #include "user_interface.h"
 
 
 //=====[Implementations of public functions]===================================
- void userInterfaceDisplayInit()
+
+ void userInterfaceDisplayInit() //initializes the LCD display to say "No Intruder"
 {
     displayInit();
     displayCharPositionWrite ( 0,0 );
@@ -20,7 +20,7 @@
 
 void userInterfaceDisplayUpdate()
 {
-    if (securityThreat == true) {
+    if (securityThreat == true) { //when there is a security threat, the message is changed on the LCD display
         displayCharPositionWrite ( 0,0 );
         displayStringWrite( "INTRUDER ALERT!        ");
     }
