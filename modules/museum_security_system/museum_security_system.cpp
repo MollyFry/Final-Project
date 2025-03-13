@@ -6,7 +6,6 @@
 #include "museum_security_system.h"
 #include "check_on_diamond.h"
 #include "intruder_detection.h"
-#include "check_code.h"
 #include "user_interface.h"
 #include "display.h"
 
