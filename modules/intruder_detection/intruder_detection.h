@@ -7,7 +7,7 @@
 
 void intruderDetectionInit();
 void intruderDetectionUpdate();
-extern bool securityThreat;
+extern bool securityThreat; //this is extern because it is used in other modules
 
 void alarms();
 
