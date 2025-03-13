@@ -8,7 +8,7 @@
 //=====[Declaration of public data types]======================================
 
 
-typedef enum {
+typedef enum { //defines the states for the light
   LIGHT_STATE_OFF,
   LIGHT_STATE_ON
 } lightState_t;
