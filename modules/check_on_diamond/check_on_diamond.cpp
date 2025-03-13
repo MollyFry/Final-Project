@@ -4,7 +4,7 @@
 
 #include "check_on_diamond.h"
 
-#define LIGHT_OFF 0.4
+#define LIGHT_OFF 0.4 //defining a value for the potentiometer
 
 //=====[Declaration and initialization of public global objects]=============
 
@@ -26,7 +26,7 @@ void lightInit()
     diamondLight = OFF; //initializes diamond light to be off
 }
 
-void handleLight()
+void handleLight() //turns the light on or off depending on the state
 {
    lightUpdate();
    switch(lightState){
@@ -38,7 +38,7 @@ void handleLight()
            break;
    }
 }
-void lightUpdate()
+void lightUpdate() //sets the state based on the potentiometer reading
 {
    lightReading = lightSelect.read();
 
