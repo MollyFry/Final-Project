@@ -11,12 +11,6 @@ extern bool securityThreat; //this is extern because it is used in other modules
 
 void alarms();
 
-
-void intruderAlarmUpdate();
-bool intruderDetectorStateRead();
-bool intruderDetectedRead();
-void intruderAlarmDeactivate();
-
 void pcSerialComStringWrite( const char* str );
 void printToMon();
 float measure_distance();
