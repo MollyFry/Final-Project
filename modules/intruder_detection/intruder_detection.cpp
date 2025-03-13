@@ -16,22 +16,23 @@ DigitalOut greenLight(PE_12);
 DigitalOut redLight(PB_4);
 DigitalInOut alarmBuzzer(PE_10); // Alarm Buzzer
 
-DigitalOut trigger(PB_8); //motion sensor
-DigitalIn echo(PB_9); //motion sensor
-UnbufferedSerial uartUsb(USBTX, USBRX, 115200);
+DigitalOut trigger(PB_8); //ultrasonic sensor
+DigitalIn echo(PB_9); //ultrasonic sensor
+UnbufferedSerial uartUsb(USBTX, USBRX, 115200); //serial monitor for testing distance ultrasonic sensor is calculating 
 
 
 
 //=====[Declaration and initialization of public global variables]=============
 
-bool securityThreat = true;
+//initializing the securityThreat variable
+bool securityThreat = false;
 
 
 
 
 //=====[Implementations of public functions]===================================
 
-void intruderDetectionInit()
+void intruderDetectionInit() //the initial state
 {
 
     securityThreat = false; //sets security threat to false initially
@@ -40,7 +41,7 @@ void intruderDetectionInit()
     redLight = OFF;
 }
 
-void intruderDetectionUpdate() 
+void intruderDetectionUpdate()  //update called which keeps the green light on, provided there is no intruder
 {  
     if (securityThreat == false){
         greenLight = ON;
@@ -51,22 +52,22 @@ void intruderDetectionUpdate()
 
 
 
-void alarms(){
+void alarms(){ //this is what occurs when the intruder is detected
 
-    alarmBuzzer.output();
+    alarmBuzzer.output(); //alarm is turned on
     greenLight = OFF;
     redLight = ON;
 
     
 }
 
-void pcSerialComStringWrite( const char* str )
+void pcSerialComStringWrite( const char* str ) //used for sending ultrasonic sensor values to monitor
 {
     uartUsb.write( str, strlen(str) );
 }
 
 
-float measure_distance() {
+float measure_distance() { //measure how far away something is from the ultrasonic sensor
     trigger = 1;
     wait_us(10);
     trigger = 0;
@@ -84,7 +85,7 @@ float measure_distance() {
 }
 
 
-void printToMon() {
+void printToMon() { //printing the distance to the serial monitor
     char str[100] = "";
     float distance = measure_distance();
     sprintf ( str, "Distance: %.2f cm\n", distance, measure_distance() );
@@ -92,12 +93,12 @@ void printToMon() {
 
 }
 
-void engageMotor() {
+void engageMotor() { //engages the motor when needed
     float distance = measure_distance();  // Store the value to avoid duplicate readings
 
     if (distance > 0 && distance < 20.00) {  // Check for valid distance
-        motorControlUpdate();
-        alarms();
-        securityThreat = true;
+        motorControlUpdate(); //deploy the motor
+        alarms(); //deploy the alarms
+        securityThreat = true; //this variable is used for the LCD display
     }
 }
